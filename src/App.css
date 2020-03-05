@@ -8,7 +8,12 @@
   border: 1px solid #ddd;
   padding: 5px;
   display: flex;
-  width: fit-content;
+  flex-direction: column;
+  align-items: center;
+}
+
+#button-div {
+  display: flex;
 }
 
 .watched {
@@ -31,7 +36,9 @@
 ul {
   display: flex;
   flex-direction: column;
-  align-content: space-around;
+  align-items: center;
+  padding-inline-start: 0px;
+  margin: 25px;
 }
 
 li {

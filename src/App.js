@@ -2,6 +2,7 @@ import React from 'react';
 import MovieList from './components/MovieList';
 import Search from './components/Search';
 import Add from './components/Add';
+import ToggleView from './components/ToggleView';
 import './App.css';
 
 class App extends React.Component {
@@ -16,7 +17,8 @@ class App extends React.Component {
         { title:  'Ex Machina',  watched: true },
       ],
       search: "",
-      newMovie: ""
+      newMovie: "",
+      view: "all"
     }
   }
 
@@ -59,17 +61,36 @@ class App extends React.Component {
     })
   }
 
+  toggleView = (event) => {
+    console.log(event.target.id)
+    let newView = event.target.id;
+    this.setState({
+      view: newView
+    })
+  }
+
   render() {
     return(
       <div id="container">
         <div id="query-div">
+          <ToggleView onClick={this.toggleView}/>
           <Add value={this.state.newMovie} onChange={this.handleAdd} onSubmit={this.addMovie} />
           <Search value={this.state.search} onChange={this.handleSearch} />
         </div>
         <ul>
-          {this.state.movies
-          .filter(movie => movie.title.toLowerCase().includes(this.state.search.toLowerCase()))
-          .map((movie, index) => <MovieList key={index} item={movie} onClick={this.toggleWatched}/>)}
+          {
+          this.state.view === "watched" ?
+            (this.state.movies.filter(movie => movie.watched)
+            .map((movie, index) => <MovieList key={index} item={movie} onClick={this.toggleWatched}/>)
+          ):
+          this.state.view === "unwatched" ?
+            (this.state.movies.filter(movie => movie.watched === false)
+            .map((movie, index) => <MovieList key={index} item={movie} onClick={this.toggleWatched}/>)
+          ):
+          this.state.movies
+            .filter(movie => movie.title.toLowerCase().includes(this.state.search.toLowerCase()))
+            .map((movie, index) => <MovieList key={index} item={movie} onClick={this.toggleWatched}/>)
+          }
         </ul>
       </div>
     )
