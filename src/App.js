@@ -72,6 +72,7 @@ class App extends React.Component {
   render() {
     return(
       <div id="container">
+        <h1>Movie List</h1>
         <div id="query-div">
           <ToggleView onClick={this.toggleView}/>
           <Add value={this.state.newMovie} onChange={this.handleAdd} onSubmit={this.addMovie} />
