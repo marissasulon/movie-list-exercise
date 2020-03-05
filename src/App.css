@@ -1,38 +1,82 @@
-.App {
-  text-align: center;
+#container {
+  margin: 10px;
+  border: 1px solid #ddd;
+  width: fit-content;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#query-div {
+  border: 1px solid #ddd;
+  padding: 5px;
+  display: flex;
+  width: fit-content;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.watched {
+  color: green;
+  cursor: pointer;
+}
+.watched:hover {
+  color: #888;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.unwatched {
+  color: #888;
+  cursor: pointer;
+}
+.unwatched:hover {
+    color: green;
+}
+
+
+ul {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-content: space-around;
 }
 
-.App-link {
-  color: #61dafb;
+li {
+  margin: 10px;
+  font-size: 18px;
+  line-height: 18px;
+  list-style: none;
+  height: 18px;
+  width: 350px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  font-family: 'Cabin', sans-serif;
+  display: flex;
+  justify-content: space-between;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input {
+  margin: 10px;
+  font-size: 18px;
+  line-height: 18px;
+  height: 18px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  font-family: 'Cabin', sans-serif;
+  color: #888;
+  justify-content: space-around;
+}
+input:focus {
+  color: #333;
+}
+
+button {
+  background: none;
+  border: 0px;
+  color: #888;
+  font-size: 15px;
+  width: 100px;
+  margin: 10px 0 0;
+  font-family: 'Cabin', sans-serif;
+  cursor: pointer;
+}
+button:hover {
+  color: #333;
 }
