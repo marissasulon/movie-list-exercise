@@ -69,6 +69,13 @@ class App extends React.Component {
     })
   }
 
+  filterAndMap = () => {
+    let filterVal;
+    this.state.view === "watched" ? filterVal = true : filterVal = false
+    return this.state.movies.filter(movie => movie.watched === filterVal)
+    .map((movie, index) => <MovieList key={index} item={movie} onClick={this.toggleWatched}/>)
+  }
+
   render() {
     return(
       <div id="container">
@@ -79,16 +86,8 @@ class App extends React.Component {
           <Search value={this.state.search} onChange={this.handleSearch} />
         </div>
         <ul>
-          {
-          this.state.view === "watched" ?
-            (this.state.movies.filter(movie => movie.watched)
-            .map((movie, index) => <MovieList key={index} item={movie} onClick={this.toggleWatched}/>)
-          ):
-          this.state.view === "unwatched" ?
-            (this.state.movies.filter(movie => movie.watched === false)
-            .map((movie, index) => <MovieList key={index} item={movie} onClick={this.toggleWatched}/>)
-          ):
-          this.state.movies
+          { this.state.view !== "all" ? this.filterAndMap() :
+            this.state.movies
             .filter(movie => movie.title.toLowerCase().includes(this.state.search.toLowerCase()))
             .map((movie, index) => <MovieList key={index} item={movie} onClick={this.toggleWatched}/>)
           }
